@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projeto acadêmico integrado de Farmácia, Estética e Enfermagem com informações e atividades sobre cuidados eficazes com acne na adolescência.">
+    <meta name="theme-color" content="#0f766e">
+    <title>AcneCare - Cuidados Eficazes para Adolescentes</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧴</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Acne<span>Care</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sobre">Sobre a Acne</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#nova-postagem" class="btn-nav">Nova Postagem</a></li>
+                    <li id="navAdminLink" hidden><a href="#admin">Painel Admin</a></li>
+                </ul>
+            </nav>
+            <div class="auth-area" id="authArea">
+                <button type="button" class="btn-nav" id="btnOpenAuth">Entrar</button>
+            </div>
+            <button type="button" class="theme-toggle" id="themeToggle" aria-label="Alternar tema">☾</button>
+            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <div class="modal-overlay" id="authModalOverlay" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+            <button type="button" class="modal-close" id="authModalClose" aria-label="Fechar">&times;</button>
+            <h2 id="authModalTitle" class="modal-title">Acessar o AcneCare</h2>
+
+            <div class="auth-tabs" role="tablist">
+                <button type="button" class="auth-tab-btn active" data-tab="login" role="tab" aria-selected="true">Entrar</button>
+                <button type="button" class="auth-tab-btn" data-tab="signup" role="tab" aria-selected="false">Cadastrar</button>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="loginEmail">E-mail</label>
+                    <input type="email" id="loginEmail" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" required minlength="6" autocomplete="current-password">
+                </div>
+                <p class="auth-error" id="loginError" hidden></p>
+                <button type="submit" class="btn-submit">Entrar</button>
+            </form>
+
+            <form id="signupForm" class="auth-form" hidden>
+                <div class="form-group">
+                    <label for="signupName">Nome</label>
+                    <input type="text" id="signupName" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">E-mail</label>
+                    <input type="email" id="signupEmail" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Senha</label>
+                    <input type="password" id="signupPassword" required minlength="6" autocomplete="new-password">
+                </div>
+                <p class="auth-hint">As contas são criadas como usuário comum. Contas de administrador são liberadas manualmente pela equipe do projeto.</p>
+                <p class="auth-error" id="signupError" hidden></p>
+                <button type="submit" class="btn-submit">Criar conta</button>
+            </form>
+        </div>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Cuidados Eficazes para a Pele na Adolescência</h2>
+            <p>Um projeto integrado das alunas de Farmácia, Estética e Enfermagem voltado para a saúde, autoestima e conscientização sobre a acne.</p>
+            <a href="#sobre" class="btn-primary">Aprender sobre a Acne</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="info-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entendendo a Acne</h2>
+                <p>Informações científicas e práticas preparadas por nossa equipe de saúde.</p>
+            </div>
+            
+            <div class="grid-info">
+                <div class="info-card">
+                    <h3>O que é a Acne?</h3>
+                    <p>A acne é uma condição inflamatória que ocorre quando os folículos pilosos da pele ficam obstruídos por sebo e células mortas, sendo muito comum na adolescência devido às alterações hormonais.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Mitos vs. Verdades</h3>
+                    <p><strong>Mito:</strong> Lavar o rosto várias vezes ao dia cura a acne. <br>
+                    <strong>Verdade:</strong> A limpeza excessiva pode causar o efeito rebote, aumentando a produção de oleosidade.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Dicas de Cuidado</h3>
+                    <p>Mantenha uma rotina simples: higienização com sabonete adequado, hidratação (sim, pele oleosa precisa de hidratação!) e uso indispensável de protetor solar facial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz" class="quiz-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quiz: Mito ou Verdade?</h2>
+                <p>Teste seus conhecimentos e descubra o que é ciência e o que é senso comum sobre a acne.</p>
+            </div>
+
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-progress" aria-hidden="true">
+                    <div class="quiz-progress-bar" id="quizProgressBar"></div>
+                </div>
+                <p class="quiz-counter" id="quizCounter">Pergunta 1 de 10</p>
+
+                <div class="quiz-card" id="quizCard">
+                    <p class="quiz-score-live">Acertos: <span id="quizScoreLive">0</span></p>
+                    <p class="quiz-statement" id="quizStatement"></p>
+
+                    <div class="quiz-options">
+                        <button type="button" class="quiz-option-btn" id="btnMito" data-answer="mito">
+                            <span class="quiz-option-icon">✕</span> Mito
+                        </button>
+                        <button type="button" class="quiz-option-btn" id="btnVerdade" data-answer="verdade">
+                            <span class="quiz-option-icon">✓</span> Verdade
+                        </button>
+                    </div>
+
+                    <div class="quiz-feedback" id="quizFeedback" hidden aria-live="polite">
+                        <p class="quiz-feedback-result" id="quizFeedbackResult"></p>
+                        <p class="quiz-feedback-explanation" id="quizFeedbackExplanation"></p>
+                        <button type="button" class="btn-primary quiz-next-btn" id="quizNextBtn">Próxima pergunta</button>
+                    </div>
+                </div>
+
+                <div class="quiz-result" id="quizResult" hidden>
+                    <div class="quiz-result-emoji" id="quizResultEmoji"></div>
+                    <h3 id="quizResultTitle"></h3>
+                    <p id="quizResultMessage"></p>
+                    <button type="button" class="btn-primary" id="quizRestartBtn">Refazer o Quiz</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Blog de Atividades</h2>
+                <p>Acompanhe os workshops, atendimentos e estudos práticos realizados pelas alunas de Farmácia, Estética e Enfermagem.</p>
+            </div>
+
+            <div class="blog-toolbar">
+                <div class="search-box"><span>⌕</span><input id="blogSearch" type="search" placeholder="Buscar uma atividade..." aria-label="Buscar atividade"></div>
+                <span id="blogCount" class="post-date">0 atividades</span>
+            </div>
+
+            <div class="blog-filters" role="group" aria-label="Filtrar postagens por curso">
+                <button class="filter-btn active" data-categoria="todos" aria-pressed="true">Todos</button>
+                <button class="filter-btn" data-categoria="Farmácia" aria-pressed="false">Farmácia</button>
+                <button class="filter-btn" data-categoria="Estética" aria-pressed="false">Estética</button>
+                <button class="filter-btn" data-categoria="Enfermagem" aria-pressed="false">Enfermagem</button>
+            </div>
+
+            <!-- As postagens abaixo são carregadas em tempo real do Firestore (somente status "aprovado"). -->
+            <div class="blog-grid" id="blogGrid"></div>
+        </div>
+    </section>
+
+    <section id="nova-postagem" class="upload-section">
+        <div class="container">
+            <div class="form-container">
+                <h2>Área de Publicação</h2>
+                <p>Alunas, utilizem o espaço abaixo para subir fotos, vídeos e relatar as atividades do projeto.</p>
+
+                <div class="post-gate" id="postGate">
+                    <p>Você precisa entrar com sua conta para enviar uma nova postagem.</p>
+                    <button type="button" class="btn-primary" id="btnGateLogin">Entrar ou Cadastrar</button>
+                </div>
+
+                <div id="postFormWrapper" hidden>
+                    <form id="postForm">
+                        <div class="form-group">
+                            <label for="postTitle">Título da Atividade</label>
+                            <input type="text" id="postTitle" required placeholder="Ex: Ação de conscientização na escola X">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postCategory">Curso / Área</label>
+                            <select id="postCategory" required>
+                                <option value="Farmácia">Farmácia</option>
+                                <option value="Estética">Estética</option>
+                                <option value="Enfermagem">Enfermagem</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postDescription">Descrição da Atividade</label>
+                            <textarea id="postDescription" rows="4" required placeholder="Conte um pouco sobre o que foi feito..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="postMedia">Upload de Foto ou Vídeo</label>
+                            <input type="file" id="postMedia" accept="image/*, video/*" required>
+                        </div>
+
+                        <button type="submit" class="btn-submit" id="postSubmitBtn">Enviar para aprovação</button>
+                    </form>
+
+                    <div class="my-posts">
+                        <h3>Suas postagens</h3>
+                        <div id="myPostsList">
+                            <p class="empty-state">Você ainda não enviou nenhuma postagem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admin" class="admin-section" hidden>
+        <div class="container">
+            <div class="section-title">
+                <h2>Painel do Administrador</h2>
+                <p>Revise as postagens enviadas pelas alunas e aprove ou rejeite antes da publicação no blog.</p>
+            </div>
+            <div class="admin-pending-list" id="adminPendingList">
+                <p class="empty-state" id="adminEmptyState">Nenhuma postagem pendente no momento.</p>
+            </div>
+        </div>
+    </section>
+
+    <button class="back-top" id="backTop" type="button" aria-label="Voltar ao topo">↑</button>
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AcneCare - Projeto Acadêmico Integrado (Farmácia, Estética e Enfermagem).</p>
+        </div>
+    </footer>
+
+    <script src="script-local.js"></script>
+</body>
+</html>
